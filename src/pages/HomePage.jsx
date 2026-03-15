@@ -5,12 +5,7 @@ import MovieGrid from '../components/MovieGrid'
 const api_key = '6b4550cc'
 
 function HomePage() {
-  const [movies, setMovies] = useState<Array<{
-    Title: string
-    Year: string
-    imdbID: string
-    Poster: string
-  }>>([])
+  const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchtext, setSearchText] = useState('')
 
@@ -36,7 +31,7 @@ function HomePage() {
     return () => clearTimeout(wait)
   }, [searchtext])
 
-  async function retrieveMovies(query: string) {
+  async function retrieveMovies(query) {
     setLoading(true)
     try {
       const answer = await fetch(

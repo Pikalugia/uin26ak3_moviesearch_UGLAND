@@ -1,17 +1,10 @@
 import { Link } from 'react-router-dom'
 
-type MovieCardProps = {
-  title: string
-  year: string
-  poster: string
-  imdbID: string
-}
-
-function createSlug(title: string) {
+function createSlug(title) {
   return title.toLowerCase().replaceAll(' ', '-')
 }
 
-function MovieCard({ title, year, poster, imdbID }: MovieCardProps) {
+function MovieCard({ title, year, poster, imdbID }) {
   const hasImage = poster && poster !== 'N/A'
   const slug = createSlug(title)
 

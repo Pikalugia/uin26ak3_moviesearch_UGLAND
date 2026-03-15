@@ -3,26 +3,10 @@ import { useState, useEffect } from 'react'
 
 const api_key = '6b4550cc'
 
-type movieDetails = {
-  Title: string
-  Year: string
-  Rated: string
-  Released: string
-  Runtime: string
-  Genre: string
-  Director: string
-  Actors: string
-  Plot: string
-  Poster: string
-  imdbRating: string
-  imdbID: string
-  Response: string
-}
-
 function MoviePage() {
   const { movie } = useParams()
   const location = useLocation()
-  const [movie_info, setMovie] = useState<movieDetails | null>(null)
+  const [movie_info, setMovie] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -31,8 +15,8 @@ function MoviePage() {
       setLoading(true)
       setError('')
 
-      const state = location.state as { imdbID?: string } | null
-      let url: string
+      const state = location.state
+      let url
 
       if (state?.imdbID) {
         // bruker imdbID om vi har det
@@ -102,7 +86,7 @@ function MoviePage() {
       </Link>
 
       <article className="movie-details">
-        
+
         <figure className="movie-img-large">
           <img
             src={hasPoster ? movie_info.Poster : '/no-image.png'} // Har film poster?

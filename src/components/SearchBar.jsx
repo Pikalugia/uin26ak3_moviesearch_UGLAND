@@ -1,9 +1,4 @@
-type SearchBarProps = {
-  value: string
-  onChange: (newValue: string) => void
-}
-
-function SearchBar({ value, onChange }: SearchBarProps) {
+function SearchBar({ value, onChange }) {
   return (
     <form className="search-bar" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="movie-search">Søk etter film:</label>

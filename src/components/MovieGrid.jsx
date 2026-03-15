@@ -1,17 +1,6 @@
 import MovieCard from './MovieCard'
 
-type Film = {
-  Title: string
-  Year: string
-  imdbID: string
-  Poster: string
-}
-
-type MovieGridProps = {
-  movies: Film[]
-}
-
-function MovieGrid({ movies }: MovieGridProps) {
+function MovieGrid({ movies }) {
   return (
     <section className="movie-grid">
       {movies.map((film) => (
