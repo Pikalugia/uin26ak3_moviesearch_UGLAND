@@ -1,7 +1,7 @@
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const API_KEY = '6b4550cc'
+const api_key = '6b4550cc'
 
 type movieDetails = {
   Title: string
@@ -36,10 +36,10 @@ function MoviePage() {
 
       if (state?.imdbID) {
         // bruker imdbID om vi har det
-        url = `https://www.omdbapi.com/?i=${state.imdbID}&plot=full&apikey=${API_KEY}`
+        url = `https://www.omdbapi.com/?i=${state.imdbID}&plot=full&apikey=${api_key}`
       } else {
         const tittel = movie?.replace(/-/g, ' ') || ''
-        url = `https://www.omdbapi.com/?t=${encodeURIComponent(tittel)}&apikey=${API_KEY}`
+        url = `https://www.omdbapi.com/?t=${encodeURIComponent(tittel)}&apikey=${api_key}`
       }
 
       try {
@@ -77,16 +77,35 @@ function MoviePage() {
     )
   }
 
-  const harPoster = movie_info.Poster !== 'N/A'
+  const hasPoster = movie_info.Poster !== 'N/A'
 
   return (
     <section className="movie-page">
-      <Link to="/" className="back-button">← Tilbake</Link>
+      <Link to="/" className="back-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="back-icon"
+        >
+          <path d="M19 12H5" />
+          <path d="M12 19l-7-7 7-7" />
+        </svg>
+
+        <span>Tilbake</span>
+      </Link>
 
       <article className="movie-details">
+        
         <figure className="movie-img-large">
           <img
-            src={harPoster ? movie_info.Poster : '/no-image.png'}
+            src={hasPoster ? movie_info.Poster : '/no-image.png'} // Har film poster?
             alt={`Plakat for ${movie_info.Title}`}
             onError={(e) => { e.currentTarget.src = '/no-image.png' }}
           />

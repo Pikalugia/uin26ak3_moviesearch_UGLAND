@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Segoe UI';
+  font-family: 'Instrument Sans';
   background-color: #131212;
   color: #FFFFFF;
 }
@@ -52,9 +52,9 @@ main {
 .search-bar input {
   width: 100%;
   padding: 10px;
-  border-radius: 20px;
-    border: 2px solid #333;
-  background: #1c1c1c;
+    border-radius: 20px;
+  border: 2px solid #ffffff00;
+  background: #272727;
   color: #FFFFFF;
 }
 
@@ -91,7 +91,7 @@ main {
 }
 
 .movie-card-img {
-  border-radius: 10px;
+  border-radius: 16px;
   aspect-ratio: 2 / 3;
   overflow: hidden;
 }
@@ -134,10 +134,19 @@ main {
 }
 
 .back-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 20px;
   margin-bottom: 24px;
   color: #FFFFFF;
   font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background: #272727;
 }
 
 .movie-details {
@@ -149,7 +158,7 @@ main {
 .movie-img-large img {
   width: 100%;
   display: block;
-  border-radius: 10px;
+  border-radius: 16px;
 }
 
 .movie-img-none {

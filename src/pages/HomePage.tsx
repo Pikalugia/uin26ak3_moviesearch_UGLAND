@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
 import MovieGrid from '../components/MovieGrid'
 
-const API_KEY = '6b4550cc'
+const api_key = '6b4550cc'
 
 function HomePage() {
   const [movies, setMovies] = useState<Array<{
@@ -14,12 +14,11 @@ function HomePage() {
   const [loading, setLoading] = useState(true)
   const [searchtext, setSearchText] = useState('')
 
-  // henter bond-filmer først
   useEffect(() => {
     retrieveMovies('james bond')
   }, [])
 
-  // denne kjører hver gang searchtext endres
+  // Hver gang searchtext endres
   useEffect(() => {
     if (searchtext.length > 0 && searchtext.length < 3) return
 
@@ -41,7 +40,7 @@ function HomePage() {
     setLoading(true)
     try {
       const answer = await fetch(
-        `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&type=movie&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&type=movie&apikey=${api_key}`
       )
       const data = await answer.json()
 
